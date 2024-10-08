@@ -15,15 +15,20 @@ public class Player {
         return healthPercentage;
     }
 
-    public void loseHealth(int damage){
-
-        if(healthPercentage < 0){
-            System.out.println(name + " player has been knocked out of game");
-        } else{
-            this.healthPercentage = healthPercentage - damage;
+    public void loseHealth(int damage) {
+        if (damage < 0) {
+            System.out.println("Damage cannot be negative.");
+            return;
         }
 
+        healthPercentage -= damage;
+
+        if (healthPercentage < 0) {
+            healthPercentage = 0;
+            System.out.println(name + " player has been knocked out of game");
+        }
     }
+
 
 
     public void restoreHealth(int healthPotion){
